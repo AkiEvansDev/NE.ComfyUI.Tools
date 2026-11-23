@@ -1,0 +1,7 @@
+* text=auto
+
+# Mirror and release scripts run under bash on a Linux runner; CRLF breaks their shebang.
+*.sh text eol=lf
+
+# Rebuilt from tag dumps; keep out of diffs and GitHub language statistics.
+autocomplete/autocomplete.txt linguist-generated=true

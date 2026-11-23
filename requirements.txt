@@ -1,0 +1,15 @@
+# Runtime dependencies for comfyui-ne-tools.
+# torch/torchvision are intentionally not listed here: ComfyUI manages the CUDA-compatible build.
+safetensors
+timm
+kornia
+transformers
+scipy
+scikit-learn
+pilgram
+opencv-python
+# Detection runs here rather than on cv2.dnn, which ships no CUDA build. The plain `onnxruntime` package
+# installs the same `onnxruntime` module and shadows `onnxruntime-gpu`, so the two must not both be present;
+# macOS publishes no `onnxruntime-gpu` wheel on PyPI and uses `onnxruntime` instead.
+onnxruntime-gpu; sys_platform != "darwin"
+onnxruntime; sys_platform == "darwin"

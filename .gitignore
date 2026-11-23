@@ -1,0 +1,33 @@
+# Python bytecode and packaging
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+
+# Environments and caches
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editors and OS artifacts
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Raw tag dumps and local model weights
+/autocomplete/*.json
+/autocomplete/*.csv
+/autocomplete/autocomplete_old.txt
+/model/*

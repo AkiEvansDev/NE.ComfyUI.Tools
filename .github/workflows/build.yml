@@ -1,0 +1,40 @@
+# Runs in the public mirror. Full smoke and unit tests require a local ComfyUI runtime and live in the
+# private repository; this verifies that every mirrored Python and JavaScript module parses cleanly.
+name: Build
+
+on:
+  # Branches only: a sync pushes the tag too, and an unfiltered push would check the same commit twice.
+  push:
+    branches:
+      - '**'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+
+      - name: Compile Python modules
+        run: python3 -m compileall -q py constants.py registry.py __init__.py
+
+      - name: Check JavaScript modules
+        run: |
+          for module in $(find js -name '*.js' | sort); do
+            node --check "$module"
+          done

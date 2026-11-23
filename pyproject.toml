@@ -1,0 +1,25 @@
+[project]
+name = "comfyui-ne-tools"
+description = "Typed step pipelines, region-isolated detailing, Dual-Expert Wan video workflows, stateful XY/XYZ grids, and frontend tools for ComfyUI."
+version = "1.0.0"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+dependencies = [
+    "safetensors",
+    "timm",
+    "kornia",
+    "transformers",
+    "scipy",
+    "scikit-learn",
+    "pilgram",
+    "opencv-python",
+    'onnxruntime-gpu; sys_platform != "darwin"',
+    'onnxruntime; sys_platform == "darwin"',
+]
+
+[project.urls]
+Repository = "https://github.com/AkiEvansDev/NE.ComfyUI.Tools"
+
+[tool.comfy]
+PublisherId = "akievansdev"
+DisplayName = "NE.ComfyUI.Tools"
